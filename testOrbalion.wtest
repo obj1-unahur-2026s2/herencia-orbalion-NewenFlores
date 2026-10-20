@@ -1,0 +1,24 @@
+import orbalion.*
+
+describe "tests checkpoint 1" {
+
+  test "1. Un entrenador no puede tener tener un rol distinto a los autorizados por la FOZ"{
+    const entrenador = new Entrenador( ciclosSolares = 15, enSintonia = true, precision = 15, rol = "Guia Mental" )
+      assert.throwsExceptionWithMessage("Rol no homologado por la FOZ", {entrenador.asignarRol("sexologo")})
+  }
+
+  test "2. Un equipo lumínico con radiación > 5000 y sin tecnologías activas → su energía total es su energía base."{
+    const equipoLuminico = new EquipoLuminico (nombre = "luz", energiaBase = 500, entrenador = new Entrenador(ciclosSolares = 15, enSintonia = true, precision = 15, rol = "Guia Mental"), tecnologias = [], radiacionCapturada = 5001, cristalesSolares = ["cristal1", "cristal2"]  )
+    assert.equals(equipoLuminico.energiaBase(), equipoLuminico.energiaTotal())
+  }
+ 
+
+
+
+
+
+
+
+
+
+}
